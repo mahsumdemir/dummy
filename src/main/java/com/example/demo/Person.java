@@ -17,6 +17,9 @@ public class Person {
     @Column
     private String surname;
 
+    @Column
+    private Long age;
+
     public Long getId() {
         return id;
     }
@@ -35,5 +38,13 @@ public class Person {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public Long getAge() {
+        return age;
+    }
+
+    public void setAge(Long age) {
+        this.age = age;
     }
 }

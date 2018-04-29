@@ -4,8 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @SpringBootApplication
+@RestController
 public class DemoApplication implements CommandLineRunner {
 
     @Autowired
@@ -21,6 +27,13 @@ public class DemoApplication implements CommandLineRunner {
         Person person = new Person();
         person.setName("Dirk");
         person.setSurname("Deyne");
+        person.setAge(20L);
         personRepository.save(person);
     }
+
+    @RequestMapping("test/findByNameContains")
+    public List<NameProjection> findByNameContains(@Param("name") String name){
+        return personRepository.findByNameContains(name);
+    }
+
 }

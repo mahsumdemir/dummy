@@ -5,6 +5,5 @@ import org.springframework.data.rest.core.config.Projection;
 
 @Projection(name = "nameProjection", types = {Person.class})
 public interface NameProjection {
-    @Value("#{target.getName()} #{target.getSurname()}")
-    String getFullName();
+    String getName();
 }
